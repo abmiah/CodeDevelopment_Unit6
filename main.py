@@ -1,6 +1,8 @@
 def message():
     name = input("Enter your name: ")
-    if name:
+    if name == "Alice":
+        print("Hello, Alice, you are the best!")
+    elif name:
         print(f"Hello, {name}!")
     else:
         print("Hello, World!")
