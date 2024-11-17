@@ -7,7 +7,7 @@ class pwnedURL:
         self.url = "https://www.ncsc.gov.uk/static-assets/documents/PwnedPasswordsTop100k.txt"
 
     def get_password_list(self):
-        response = requests.get(self.url)
+        response = requests.get(self.url, auth = ('user', 'pass'))
         if response.status_code == 200:
             return response.text.splitlines()
         else:
