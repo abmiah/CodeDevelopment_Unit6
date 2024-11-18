@@ -1,12 +1,12 @@
-#This first section of code is the admin password section, it will set the admin password and print it to the console
+# This first section of code is the admin password class, it will set the admin password and print it to the console to be tested
 
-"""This class section is to set the admin password to be checked"""
+"""This class section sets the admin password to be checked by the rest of the program"""
 class AdminPassword:
-    """This section sets the admin password to be checked"""
+    """Section sets the admin password"""
     def __init__(self):
         self.password = input("Please set an admin password: ")
 
-    """The class will then print the password to the console"""
+    """The class will print the password to the console"""
     def print_password(self):
         print("The admin password is:", self.password)
 
