@@ -1,47 +1,69 @@
-# This section of the code will count the length of the password and check the character types
-# The code will use the AdminPassword class from adminPassword.py file to set the password and check the password length and character types import types
+# This part of the code checks how long the password is and identifies the types of characters used.
+# The code uses the AdminPassword class from adminPassword.py to set and verify the password length and character types.
 
 from adminPassword import AdminPassword
 
-"""This class will count the length of the password and check the character types"""
+"""This class will measure the length of a password and check what types of characters it contains."""
+
+
 class PasswordCount:
     def __init__(self, admin_password):
         self.admin = admin_password
         self.count = self.count_password_length(self.admin.password)
         self.character_types = self.check_character_types(self.admin.password)
+        self.score = self.evaluate_password_strength()
 
-    """The function below will count the length of the password"""
-    def count_password_length(self, password):
+    """The function below measures how long the password is."""
+
+    @staticmethod
+    def count_password_length(password):
         return len(password)
 
-    """The function below will print the length of the password to the console. The function uses the "if" and "else" 
-    statement to check if the password is less than 8 characters long"""
-    def print_password_length(self):
-        if self.count < 8:
-            print(f"The length of the password is for \"{self.admin.password}\": is {self.count} characters long")
-            print(f"The password should be at least 8 characters long")
-        else:
-            print(f"The length of the password for \"{self.admin.password}\" is {self.count} characters long")
+    """The function below prints the length of a password and checks if it is shorter than 8 characters using 
+    "if" and "else" statements."""
 
-    """The function method below will check the character types of the password. The method uses a dictionary to 
-    store the values of the character types. The function uses the "isupper", "islower", "isdigit" and "isalnum" 
-    functions to check the character types."""
-    def check_character_types(self, password):
-        types = {
+    def print_password_length(self):
+        print(f"The password length \"{self.admin.password}\": is {self.count} characters long")
+        if self.count <= 8:
+            print("The password should be at least 8 characters long")
+            print("Your password should include a combination of uppercase letters, lowercase letters, numbers, and special characters.")
+
+
+    """The method below checks the character types of a password, using a dictionary to store their values."""
+
+    @staticmethod
+    def check_character_types(password):
+        return {
             "Uppercase": sum(1 for char in password if char.isupper()),
             "Lowercase": sum(1 for char in password if char.islower()),
             "Numeric": sum(1 for char in password if char.isdigit()),
             "Special": sum(1 for char in password if not char.isalnum()),
         }
-        return types
+        # return types
 
-    """The final part of the function will print the character types to the console. The "for" loop will iterate through 
-    the dictionary and print the character types to the console"""
+    """The function's final part prints character types to the console using a "for" loop that iterates 
+    through the dictionary."""
+
     def print_character_types(self):
         print(f"Password \"{self.admin.password}\" contains:")
         for key, value in self.character_types.items():
             # print(f"{key}: {'Yes' if value else 'No'}")
             print(f"{key}: {'Yes' if value else 'No'} = {value} characters")
+
+    """The function checks how strong a password is by looking at its length and the types of characters it uses."""
+
+    def evaluate_password_strength(self):
+        score = sum([
+            self.count >= 8,
+            self.character_types["Uppercase"] > 1,
+            self.character_types["Lowercase"] > 1,
+            self.character_types["Numeric"] > 1,
+            self.character_types["Special"] > 1
+        ])
+        return "Weak" if score <= 2 else "Moderate" if score <= 4 else "Strong"
+
+    def print_password_strength(self):
+        print(f"Password \"{self.admin.password}\" has a strength rating of: {self.score}")
 
 
 if __name__ == "__main__":
@@ -49,3 +71,4 @@ if __name__ == "__main__":
     password_count = PasswordCount(admin)
     password_count.print_password_length()
     password_count.print_character_types()
+    password_count.print_password_strength()
