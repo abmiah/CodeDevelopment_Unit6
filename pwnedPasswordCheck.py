@@ -2,7 +2,6 @@
 # To achieve this, the "requests" library is used get the password list from the NCSC website. "pip install requests" has to be installed to use the requests library
 import requests
 
-
 class pwnedURL:
     """The function will set the URL to pull the top 100,000 passwords from the NCSC website"""
     def __init__(self):
