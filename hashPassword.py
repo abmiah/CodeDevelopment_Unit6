@@ -3,8 +3,6 @@
 
 import hashlib
 
-# from adminPassword import AdminPassword
-
 """The initial class will set the admin password and use the hashlib library to hash it."""
 
 
@@ -33,10 +31,3 @@ class PasswordHash:
 if __name__ == "__main__":
     hasher = PasswordHash()
     hasher.print_hashed_password()
-
-    """The code checks if the password is hashed and shows the result, which should be commented out in the 
-    final version. Can we simplify passwordCount.py while keeping it functional?"""
-    # if hasher.is_password_hashed(hasher.admin.password):
-    #     print(f"The password {hasher.admin.password} is hashed")
-    # else:
-    #     print(f"The password {hasher.admin.password} is not hashed")

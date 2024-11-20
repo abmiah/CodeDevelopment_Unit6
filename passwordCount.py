@@ -26,8 +26,7 @@ class PasswordCount:
         print(f"The password length \"{self.admin.password}\": is {self.count} characters long")
         if self.count <= 8:
             print("The password should be at least 8 characters long")
-            print("Your password should include a combination of uppercase letters, lowercase letters, numbers, and special characters.")
-
+            print("Your password must combine uppercase, lowercase, numbers, and special characters.")
 
     """The method below checks the character types of a password, using a dictionary to store their values."""
 
@@ -64,6 +63,9 @@ class PasswordCount:
 
     def print_password_strength(self):
         print(f"Password \"{self.admin.password}\" has a strength rating of: {self.score}")
+
+    def is_password_weak(self):
+        return len(self.admin.password) < 8 or self.score in {"Weak", "Moderate"}
 
 
 if __name__ == "__main__":
