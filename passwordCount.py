@@ -1,5 +1,5 @@
 # This part of the code checks how long the password is and identifies the types of characters used.
-# The code uses the AdminPassword class from adminPassword.py to set and verify the password length and character types.
+# The code uses the "AdminPassword" class from "adminPassword.py" to set and verify the password length and character types.
 
 from adminPassword import AdminPassword
 

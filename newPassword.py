@@ -13,10 +13,10 @@ class NewPassword:
     def __init__(self):
         self.password = self.random_password()
 
-    """This function generates a random password with a length of 18 characters. It uses the string library to get 
+    """This function generates a random password with a length of 25 characters. It uses the string library to get 
     the @staticmethod decorator to make it a class method."""
     @staticmethod
-    def random_password(length=18):
+    def random_password(length=25):
         characters = string.ascii_letters + string.digits + string.punctuation
         return ''.join(random.choices(characters, k=length))
 
