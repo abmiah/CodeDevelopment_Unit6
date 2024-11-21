@@ -12,8 +12,8 @@ from hashPassword import PasswordHash
 from passwordCount import PasswordCount
 from newPassword import NewPassword
 
-"""The PasswordChecker class checks passwords against the NCSC PwnedPasswordsTop100k.txt file, hashes the password, 
-verifies the password length, and generates a new password if the current one is determined to be weak."""
+""" The "PasswordChecker" class checks passwords against the NCSC PwnedPasswordsTop100k.txt file, verifies their length, 
+hashes them, and generates a new password if weak."""
 
 
 class PasswordChecker:
@@ -23,7 +23,7 @@ class PasswordChecker:
         self.hasher = PasswordHash(self.admin)
         self.new_random_password = NewPassword()
 
-    """The check_password_from_pwned method verifies if the admin password is in the NCSC PwnedPasswordsTop100k.txt file."""
+    """ The "check_password_from_pwned" method verifies if the admin password is in the NCSC PwnedPasswordsTop100k.txt file. """
 
     def check_password_from_pwned(self):
         password_list = self.url.get_password_list()
@@ -32,8 +32,8 @@ class PasswordChecker:
         else:
             print(f"\"{self.admin.password}\" Password is not listed in NCSC PwnedPasswordsTop100k.txt")
 
-    """The following function checks whether the admin password is encrypted by using the "is_password_hashed" method 
-   from the PasswordHash class."""
+    """ The function verifies if the admin password is encrypted using the "is_password_hashed" method from the 
+    "PasswordHash" class."""
 
     def check_password_hashed(self):
         if self.hasher.is_password_hashed(self.admin.password):
@@ -41,8 +41,8 @@ class PasswordChecker:
         else:
             print(f"The password \"{self.admin.password}\" is not hashed. \"{self.admin.password}\" as hashed \"{self.hasher.hashed_password}\"")
 
-    """The function verifies the length of the password and the types of characters used by using the 
-    "PasswordCount" class."""
+    """ The function verifies the length of the password and the types of characters used by using the 
+    "PasswordCount" class. """
 
     def check_password_length(self):
         password_count = PasswordCount(self.admin)
@@ -50,7 +50,7 @@ class PasswordChecker:
         password_count.print_character_types()
         password_count.print_password_strength()
 
-    """The new_password method evaluates password strength and generates a new one if it is weak."""
+    """ The "new_password" method evaluates password strength and generates a new one if it is weak. """
 
     def new_password(self):
         password_count = PasswordCount(self.admin)
@@ -58,10 +58,6 @@ class PasswordChecker:
             self.new_random_password.print_password()
         else:
             print(Fore.GREEN + "No mitigation process is required" + Fore.RESET)
-
-
-"""This function, which is outside of the class, prints messages to the console with a delay of 1.5 seconds. 
-Its purpose is to facilitate the visualization of the password check process as it is displayed in the console."""
 
 
 def slow_print(message):

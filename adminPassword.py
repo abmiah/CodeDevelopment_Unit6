@@ -1,13 +1,11 @@
-# This code defines the admin password class and prints the password to the console for testing.
-# The class imports the socket and requests libraries to create a server that listens for incoming connections.
+# This code defines the admin password class and prints the password to the console.
+# The class imports the "socket" and "requests" to create a server that listens for incoming connections.
 import socket
 import requests
 
-"""This part of the class sets the admin password to verify the program."""
-
 
 class AdminPassword:
-    """Section sets the admin password and print the password to the console"""
+    """ Section sets the admin password and print the password to the console """
 
     def __init__(self):
         self.password = input("Please set an admin password: ")
@@ -15,8 +13,9 @@ class AdminPassword:
         self.weak_passwords = self.load_weak_passwords()
         self.running = True
 
-    """The "load_weak_passwords" method retrieves the top 100,000 passwords from the NCSC website and stores them in 
-    a set. It utilizes the "requests" library to download the password list from the NCSC website."""
+    """ The "load_weak_passwords" method uses the "requests" library to download and store the top 100,000 
+    passwords from the NCSC. """
+
     @staticmethod
     def load_weak_passwords():
         url = 'https://www.ncsc.gov.uk/static-assets/documents/PwnedPasswordsTop100k.txt'
@@ -27,25 +26,23 @@ class AdminPassword:
             print("Failed to load weak passwords list. Using a default list.")
             return {'password', '123456', 'admin'}
 
-    """The function below checks if a password is weak by comparing it to the weak password list from the NCSC website."""
+    """ Checks if the password is weak by comparing it to the weak password list from the NCSC website. """
+
     def is_weak_password(self, password):
         return password in self.weak_passwords
 
-    """This function initiates the authentication server on localhost at the specified port number. It listens 
-    for incoming connections from clients. When a connection is established, the server reads the password attempt 
-    submitted by the client. If this password attempt matches the admin password, the server responds with a message 
-    indicating that authentication was successful. Conversely, if the password attempt does not match the admin 
-    password, the server sends a message indicating that authentication failed. After processing the password attempt, 
-    the server closes the connection with the client."""
+    """ This function starts an authentication server on localhost at a specified port, listening for client connections. 
+    It checks the submitted password against the admin password, sending a success message if they match, or a failure 
+    message if they do not. """
+
     def start_auth_server(self):
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_socket.bind(('localhost', 12345))
         server_socket.listen(1)
         print("Authentication server started on localhost:12345")
 
-        """The "try" and "except" block below listens for incoming connections from clients and reads the password 
-        attempts. This was added to the "start_auth_server" method to manage exceptions that may occur during 
-        the server's operation."""
+        """ The "try" and "except" block below listens for incoming client connections and reads password attempts, 
+        helping to manage exceptions in the "start_auth_server" method. """
         try:
             while self.running:
                 client_socket, address = server_socket.accept()
@@ -68,8 +65,9 @@ class AdminPassword:
         finally:
             server_socket.close()
 
-    """The function below stops the authentication server by setting the "running" attribute to False.This causes
-    the server to stop listening for incoming connections and exit the loop in the "start_auth_server" method."""
+    """ This stops the authentication server by setting the "running" attribute to "False", stopping the 
+    connections and exits the "start_auth_server" loop. """
+
     def stop_auth_server(self):
         self.running = False
 

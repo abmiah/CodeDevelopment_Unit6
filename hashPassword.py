@@ -3,7 +3,7 @@
 
 import hashlib
 
-"""The initial class will set the admin password and use the hashlib library to hash it."""
+""" The initial class will set the admin password and use the hashlib library to hash it. """
 
 
 class PasswordHash:
@@ -11,7 +11,7 @@ class PasswordHash:
         self.admin = admin_password
         self.hashed_password = self.hash_password(self.admin.password)
 
-    """The function below encrypts the password using SHA-256. After that, it encodes and hashes the password."""
+    """ The function below encrypts the password using SHA-256, encodes and hashes the password. """
 
     @staticmethod
     def hash_password(password):
@@ -21,8 +21,6 @@ class PasswordHash:
 
     def is_password_hashed(self, password):
         return password == self.hashed_password
-
-    """The section of the function below will display the hashed password on the console."""
 
     def print_hashed_password(self):
         print(f"The hashed password is: {self.hashed_password}")
