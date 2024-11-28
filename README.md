@@ -1,8 +1,8 @@
 ### GitHub Repository
-`https://github.com/abmiah/CodeDevelopment_Unit6.git`
+[https://github.com/abmiah/CodeDevelopment_Unit6.git](https://github.com/abmiah/CodeDevelopment_Unit6.git)
 
 ### Video demonstration
-`https://youtu.be/Av_VLlPn6bo`
+[https://youtu.be/Av_VLlPn6bo](https://youtu.be/Av_VLlPn6bo)
 
 ## 1.	Introduction 
 
@@ -75,7 +75,7 @@ address vulnerabilities associated with weak passwords by generating new, more r
 
 ## 4.3.	Clone repository.
 
-You can clone the initial code from the GitHub repository using the following link: `https://github.com/abmiah/CodeDevelopment_Unit6.git`.
+You can clone the initial code from the GitHub repository using the following link: [https://github.com/abmiah/CodeDevelopment_Unit6.git](https://github.com/abmiah/CodeDevelopment_Unit6.git).
 
 ## 4.4.	Running the script
 
