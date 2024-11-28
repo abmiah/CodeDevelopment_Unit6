@@ -1,3 +1,9 @@
+### GitHub Repository
+`https://github.com/abmiah/CodeDevelopment_Unit6.git`
+
+### Video demonstration
+`https://youtu.be/Av_VLlPn6bo`
+
 ## 1.	Introduction 
 
 This README documentation presents a comprehensive examination of the evolution of initial collaborative efforts that 
